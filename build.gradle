@@ -1,21 +1,12 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.0'
+	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id "application"
-}
-
-apply plugin : "java"
-ext {
-	javaMainClass = "com.galvanize.tmo.paspringstarter.PaSpringStarterApplication"
-}
-
-application {
-	mainClassName = javaMainClass
 }
 
 group = 'com.galvanize.tmo'
 version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
