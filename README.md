@@ -6,8 +6,8 @@ This starter utilizes Gradle as its build tool. After cloning and changing into 
 Please refer to the [Gradle Wrapper docs](https://docs.gradle.org/current/userguide/gradle_wrapper.html) for further info on building, running, and testing the application.
 
 Simple use cases will involve these commands:
+- `./gradlew bootRun` to start the Tomcat server with your application
 - `./gradlew test -i` in order to run your tests and see the output in the terminal
 - `./gradlew build` to create a build of the application for use in web server or deployment
-- `./gradlew run` to start the Tomcat server with your application
 
 You can leverage the UI in your IDE to run these tasks as well.  
