@@ -18,7 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @RestController
-@RequestMapping("/api/books")
+@RequestMapping("api/books")
 public class LibraryController {
 
     @Autowired
