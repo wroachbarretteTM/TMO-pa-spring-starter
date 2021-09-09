@@ -31,7 +31,7 @@ public class LibraryController {
     
 
     @GetMapping("")
-    public ResponseEntity<List<Book>> getBooks() {
+    public ResponseEntity<String> getBooks() {
        
         ObjectMapper mapper = new ObjectMapper();
         List<Book> bookList = service.readAll();
@@ -39,11 +39,11 @@ public class LibraryController {
         String output = new String();
         if (bookList != null && bookList.size() > 0) {
            try {
-           output= mapper.writeValueAsString(bookList);
+           output= "books " + mapper.writeValueAsString(bookList);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return ResponseEntity.ok(bookList);
+        return ResponseEntity.ok(output);
         } else {
             return ResponseEntity.notFound().build();
         }
