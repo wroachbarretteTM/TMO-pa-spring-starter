@@ -46,7 +46,7 @@ public class Book{
         this.title = title;
     }
 
-    public String yearPublished(){
+    public String getyearPublished(){
         return this.yearPublished;
     }
     
@@ -64,6 +64,6 @@ public class Book{
 
     @Override
     public String toString() {
-        return "Book {id: " + id + ", author: " + author + ", title: " + title + "yearPublished: " + yearPublished + "}";
+        return "Book {id: " + id + ", author: " + author + ", title: " + title + ", yearPublished: " + yearPublished + "}";
     }
 }
