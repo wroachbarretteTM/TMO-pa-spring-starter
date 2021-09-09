@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,16 @@ public class LibraryController {
        
         ObjectMapper mapper = new ObjectMapper();
         List<Book> bookList = service.readAll();
+
+        String output = new String();
         if (bookList != null && bookList.size() > 0) {
-           return ResponseEntity.ok(mapper.writeValueAsString(bookList));
+           try {
+           output= mapper.writeValueAsString(bookList);
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(output);
         } else {
             return ResponseEntity.notFound().build();
         }
