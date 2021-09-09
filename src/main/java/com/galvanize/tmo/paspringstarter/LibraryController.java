@@ -41,7 +41,6 @@ public class LibraryController {
            try {
            output= mapper.writeValueAsString(bookList);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return ResponseEntity.ok(bookList);
@@ -72,7 +71,6 @@ public class LibraryController {
         try {
             outputString = mapper.writeValueAsString(book);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
