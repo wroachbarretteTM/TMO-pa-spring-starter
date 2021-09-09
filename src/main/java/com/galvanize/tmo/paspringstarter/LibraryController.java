@@ -61,20 +61,27 @@ public class LibraryController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Book> create(@RequestBody Book book)
+    public ResponseEntity<String> create(@RequestBody Book book)
     throws URISyntaxException{
         Book createdBook = service.create(book);
+        ObjectMapper mapper = new ObjectMapper();
     if (createdBook == null) {
         return ResponseEntity.notFound().build();
     } else {
-
+        String outputString = new String();
+        try {
+            outputString = mapper.writeValueAsString(book);
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
           .path("/{id}")
           .buildAndExpand(createdBook.getId())
           .toUri();
 
         return ResponseEntity.created(uri)
-          .body(createdBook);
+          .body(outputString);
     }
 
     }
