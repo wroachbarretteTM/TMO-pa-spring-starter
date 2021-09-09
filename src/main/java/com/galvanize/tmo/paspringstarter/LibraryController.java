@@ -54,7 +54,7 @@ public class LibraryController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Book> create(@RequestBody Book book)
+    public ResponseEntity<String> create(@RequestBody Book book)
     throws URISyntaxException{
         Book createdBook = service.create(book);
     if (createdBook == null) {
@@ -67,7 +67,7 @@ public class LibraryController {
           .toUri();
 
         return ResponseEntity.created(uri)
-          .body(createdBook);
+          .body(createdBook.toString());
     }
 
     }
