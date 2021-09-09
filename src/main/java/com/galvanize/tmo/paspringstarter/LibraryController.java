@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,11 +30,12 @@ public class LibraryController {
     
 
     @GetMapping("")
-    public ResponseEntity<List<Book>> getBooks() {
+    public ResponseEntity<String> getBooks() {
        
+        ObjectMapper mapper = new ObjectMapper();
         List<Book> bookList = service.readAll();
         if (bookList != null && bookList.size() > 0) {
-            return ResponseEntity.ok(bookList);
+           return ResponseEntity.ok(mapper.writeValueAsString(bookList));
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -49,7 +52,7 @@ public class LibraryController {
     }
 
     @PostMapping("")
-    public ResponseEntity<String> create(@RequestBody Book book)
+    public ResponseEntity<Book> create(@RequestBody Book book)
     throws URISyntaxException{
         Book createdBook = service.create(book);
     if (createdBook == null) {
@@ -62,7 +65,7 @@ public class LibraryController {
           .toUri();
 
         return ResponseEntity.created(uri)
-          .body(createdBook.toString());
+          .body(createdBook);
     }
 
     }
