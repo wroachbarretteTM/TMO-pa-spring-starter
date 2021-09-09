@@ -48,5 +48,6 @@ public class LibraryService {
                     
             }).stream()
             .collect(Collectors.toConcurrentMap(s -> s.getId(), Function.identity()));
+            sequence = new AtomicLong(0);
     }
 }
