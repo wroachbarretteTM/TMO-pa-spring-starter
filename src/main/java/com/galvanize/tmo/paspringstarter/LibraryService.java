@@ -19,7 +19,7 @@ public class LibraryService {
         .collect(Collectors.toConcurrentMap(s -> s.getId(), Function.identity()));
     
     // DB id sequence mock
-    private AtomicLong sequence = new AtomicLong(3);
+    private AtomicLong sequence = new AtomicLong(0);
     
     public List<Book> readAll() {
         return repository.values().stream().collect(Collectors.toList());
