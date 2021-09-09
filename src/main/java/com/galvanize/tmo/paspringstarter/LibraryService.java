@@ -14,9 +14,7 @@ public class LibraryService {
     // DB repository mock
     private Map<Long, Book> repository = Arrays.asList(
         new Book[]{
-                new Book("Title", "Author", "Year Published", 1),
-                new Book("Title1", "Author1", "Year Published1", 2),
-                new Book("Title2", "Author2", "Year Published2", 3),
+                
         }).stream()
         .collect(Collectors.toConcurrentMap(s -> s.getId(), Function.identity()));
     
