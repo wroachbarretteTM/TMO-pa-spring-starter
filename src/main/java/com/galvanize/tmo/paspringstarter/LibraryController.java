@@ -26,7 +26,7 @@ public class LibraryController {
 
     
 
-    @GetMapping("/")
+    @GetMapping("/books")
     public ResponseEntity<String> getBooks() {
         List<Book> bookList = service.readAll();
         if (bookList != null && bookList.size() > 0) {
@@ -53,7 +53,7 @@ public class LibraryController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("/books")
     public ResponseEntity<Book> create(@RequestBody Book book)
     throws URISyntaxException{
         Book createdBook = service.create(book);
