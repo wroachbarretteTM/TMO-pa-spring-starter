@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
+
 @RestController
 @RequestMapping("api/books")
 public class LibraryController {
@@ -27,17 +28,11 @@ public class LibraryController {
     
 
     @GetMapping("")
-    public ResponseEntity<String> getBooks() {
+    public ResponseEntity<List<Book>> getBooks() {
+       
         List<Book> bookList = service.readAll();
         if (bookList != null && bookList.size() > 0) {
-
-            String bookJSON = "{ books: [ ";
-            for(Book book :bookList){
-                bookJSON = bookJSON + book.toString() + ", ";
-            }
-            bookJSON = bookJSON + " } ]";
-
-            return ResponseEntity.ok(bookJSON);
+            return ResponseEntity.ok(bookList);
         } else {
             return ResponseEntity.notFound().build();
         }
