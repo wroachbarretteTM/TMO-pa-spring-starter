@@ -96,8 +96,8 @@ public class LibraryController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteBook(@PathVariable Long id) {
+    @DeleteMapping("")
+    public ResponseEntity<Object> deleteBook() {
         service.delete();
 
         return ResponseEntity.noContent().build();
