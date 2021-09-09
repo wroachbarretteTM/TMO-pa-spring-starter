@@ -8,20 +8,20 @@ public class Book{
     private long id;
     private String author;
     private String title;
-    private String yearPublished;
+    private Integer yearPublished;
 
     public Book() {}
 
 
 
-    public Book(String author, String title, String yearPublished){
+    public Book(String author, String title, Integer yearPublished){
         super();
         this.author = author;
         this.title = title;
         this.yearPublished = yearPublished;
     }
 
-    Book(String author, String title, String yearPublished, long id){
+    Book(String author, String title, Integer yearPublished, long id){
         super();
         this.author = author;
         this.title = title;
@@ -46,11 +46,11 @@ public class Book{
         this.title = title;
     }
 
-    public String getyearPublished(){
+    public Integer getyearPublished(){
         return this.yearPublished;
     }
     
-    public void setYearPublished(String yearPublished){
+    public void setYearPublished(Integer yearPublished){
         this.yearPublished = yearPublished;
     }
 
