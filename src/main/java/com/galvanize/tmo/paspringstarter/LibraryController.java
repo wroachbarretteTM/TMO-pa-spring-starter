@@ -31,7 +31,7 @@ public class LibraryController {
     
 
     @GetMapping("")
-    public ResponseEntity<String> getBooks() {
+    public ResponseEntity<List<Book>> getBooks() {
        
         ObjectMapper mapper = new ObjectMapper();
         List<Book> bookList = service.readAll();
@@ -44,7 +44,7 @@ public class LibraryController {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return ResponseEntity.ok(output);
+        return ResponseEntity.ok(bookList);
         } else {
             return ResponseEntity.notFound().build();
         }
