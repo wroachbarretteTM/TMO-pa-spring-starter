@@ -47,14 +47,14 @@ public class LibraryService {
         return oldBook == null ? null : book;
     }
     
-    /*public void deleteAll() {
+    public void deleteAll() {
         repository=Arrays.asList(
             new Book[]{
                     
             }).stream()
             .collect(Collectors.toConcurrentMap(s -> s.getId(), Function.identity()));
             sequence = new AtomicLong(0);
-    }*/
+    }
     public void delete(Long id) {
         repository.remove(id);
     }

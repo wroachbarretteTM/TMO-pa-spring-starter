@@ -88,12 +88,12 @@ public class LibraryController {
         }
     }
 
-    /*@DeleteMapping
+    @DeleteMapping
     public ResponseEntity<Book> deleteAllBooks() {
         service.deleteAll();
 
         return ResponseEntity.noContent().build();
-    }*/
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Book> deleteBook(@PathVariable Long id) {
