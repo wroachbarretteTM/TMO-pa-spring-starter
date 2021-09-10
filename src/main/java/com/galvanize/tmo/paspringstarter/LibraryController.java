@@ -33,13 +33,7 @@ public class LibraryController {
 
     @GetMapping
     public ResponseEntity<List<Book>> getBooks() {
-       
-        List<Book> bookList = service.readAll();
-       // Collections.sort(bookList, new TitleComparator());
-        
-
-        
-        return ResponseEntity.ok(bookList);
+       return ResponseEntity.ok(service.readAll());
        
     }
 
