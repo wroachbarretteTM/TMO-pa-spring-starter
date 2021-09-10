@@ -2,10 +2,12 @@ package com.galvanize.tmo.paspringstarter;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,23 +32,16 @@ public class LibraryController {
 
     
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<List<Book>> getBooks() {
        
-        ObjectMapper mapper = new ObjectMapper();
         List<Book> bookList = service.readAll();
+        Collections.sort(bookList, new TitleComparator());
+        
 
-        String output = new String();
-        if (bookList != null && bookList.size() > 0) {
-           try {
-           output= "books " + mapper.writeValueAsString(bookList);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        
         return ResponseEntity.ok(bookList);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+       
     }
 
     @GetMapping("/{id}")
@@ -59,7 +54,7 @@ public class LibraryController {
         }
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<String> create(@RequestBody Book book)
     throws URISyntaxException{
         Book createdBook = service.create(book);
@@ -94,9 +89,16 @@ public class LibraryController {
         }
     }
 
-    @DeleteMapping("")
-    public ResponseEntity<Object> deleteBook() {
-        service.delete();
+    @DeleteMapping
+    public ResponseEntity<Book> deleteAllBooks() {
+        service.deleteAll();
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Book> deleteBook(@PathVariable Long id) {
+        service.delete(id);
 
         return ResponseEntity.noContent().build();
     }
