@@ -36,7 +36,7 @@ public class LibraryController {
     public ResponseEntity<List<Book>> getBooks() {
        
         List<Book> bookList = service.readAll();
-        Collections.sort(bookList, new TitleComparator());
+       // Collections.sort(bookList, new TitleComparator());
         
 
         
