@@ -2,7 +2,6 @@ package com.galvanize.tmo.paspringstarter;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -89,12 +88,12 @@ public class LibraryController {
         }
     }
 
-    @DeleteMapping
+    /*@DeleteMapping
     public ResponseEntity<Book> deleteAllBooks() {
         service.deleteAll();
 
         return ResponseEntity.noContent().build();
-    }
+    }*/
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Book> deleteBook(@PathVariable Long id) {

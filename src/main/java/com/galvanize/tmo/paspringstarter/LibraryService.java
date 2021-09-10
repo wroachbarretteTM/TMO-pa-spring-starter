@@ -1,5 +1,6 @@
 package com.galvanize.tmo.paspringstarter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -22,7 +23,11 @@ public class LibraryService {
     private AtomicLong sequence = new AtomicLong(0);
     
     public List<Book> readAll() {
-        return repository.values().stream().collect(Collectors.toList());
+        List<Book> bookList = repository.values().stream().collect(Collectors.toList());
+        Collections.sort(bookList, new TitleComparator());
+        return bookList;
+
+       
     }
     
     public Book read(Long id) {
@@ -42,14 +47,14 @@ public class LibraryService {
         return oldBook == null ? null : book;
     }
     
-    public void deleteAll() {
+    /*public void deleteAll() {
         repository=Arrays.asList(
             new Book[]{
                     
             }).stream()
             .collect(Collectors.toConcurrentMap(s -> s.getId(), Function.identity()));
             sequence = new AtomicLong(0);
-    }
+    }*/
     public void delete(Long id) {
         repository.remove(id);
     }
