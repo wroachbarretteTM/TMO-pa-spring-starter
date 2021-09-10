@@ -2,7 +2,7 @@ package com.galvanize.tmo.paspringstarter;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
+
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +32,7 @@ public class LibraryController {
     
 
     @GetMapping
-    public ResponseEntity<List<Book>> getBooks() {
+    public ResponseEntity<Books> getBooks() {
        return ResponseEntity.ok(service.readAll());
        
     }

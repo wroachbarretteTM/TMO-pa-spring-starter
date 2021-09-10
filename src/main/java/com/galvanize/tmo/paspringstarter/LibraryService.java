@@ -22,10 +22,10 @@ public class LibraryService {
     // DB id sequence mock
     private AtomicLong sequence = new AtomicLong(0);
     
-    public List<Book> readAll() {
+    public Books readAll() {
         List<Book> bookList = repository.values().stream().collect(Collectors.toList());
         Collections.sort(bookList, new TitleComparator());
-        return bookList;
+        return new Books(bookList);
 
        
     }
@@ -57,5 +57,13 @@ public class LibraryService {
     }
     public void delete(Long id) {
         repository.remove(id);
+    }
+}
+
+class Books{
+    public List<Book> books;
+
+     Books(List<Book> books){
+        this.books = books;
     }
 }
